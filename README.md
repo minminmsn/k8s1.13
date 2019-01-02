@@ -11,7 +11,7 @@ https://github.com/kubernetes/dashboard/issues/3472
 
 ### 一、填坑
 按照官网文档一条命令即可，但是国内显然不是这样，首先要填许多坑才行
-坑一：Docker镜像
+#### 坑一：Docker镜像
 ##### 1、注册阿里云账户构建自己的镜像
 可以关联github构建，这样就可以把国外镜像生成为阿里云镜像
 https://github.com/minminmsn/k8s1.13/tree/master/kubernetes-dashboard-amd64/Dockerfile
@@ -19,7 +19,7 @@ https://github.com/minminmsn/k8s1.13/tree/master/kubernetes-dashboard-amd64/Dock
 docker pull registry.cn-beijing.aliyuncs.com/minminmsn/kubernetes-dashboard:v1.10.1
 
 
-### 坑二：SSL证书
+#### 坑二：SSL证书
 证书不对或者用auto创建的证书会报错，报错见https://github.com/kubernetes/dashboard/issues/3472
 ##### 1、如果购买有的证书的话，把证书文件放在certs/目录下创建secret即可
 ```
@@ -58,7 +58,7 @@ dashboard.crt  dashboard.csr  dashboard.key
 secret/kubernetes-dashboard-certs created
 ```
 
-### 坑三：修改service配置，将type: ClusterIP改成NodePort,便于通过Node端口访问
+#### 坑三：修改service配置，将type: ClusterIP改成NodePort,便于通过Node端口访问
 ```
 [root@elasticsearch01 /]# wget https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
 [root@elasticsearch01 /]# vim /k8s/yaml/kubernetes-dashboard.yaml 
