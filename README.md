@@ -1,4 +1,4 @@
-##Kubernetes1.13.1部署Kuberneted-dashboard v1.10.1版本
+## Kubernetes1.13.1部署Kuberneted-dashboard v1.10.1版本
 ### 参考文档
 ```
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
