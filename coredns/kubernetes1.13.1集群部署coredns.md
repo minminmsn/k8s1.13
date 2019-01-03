@@ -1,4 +1,4 @@
-### kubenetes1.13.1 部署coredns
+### kubernetes1.13.1部署coredns
 > 参考文档
 https://www.cnblogs.com/aguncn/p/7217884.html
 https://github.com/coredns/deployment/issues/111
