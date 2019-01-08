@@ -305,7 +305,7 @@ cat << EOF | tee server-csr.json
 {
     "CN": "kubernetes",
     "hosts": [
-      "10.0.0.1",
+      "10.254.0.1",
       "127.0.0.1",
       "10.2.8.44",
 	  "10.2.8.65",
@@ -421,7 +421,7 @@ KUBE_APISERVER_OPTS="--logtostderr=true \
 --advertise-address=10.2.8.44 \
 --allow-privileged=true \
 --service-cluster-ip-range=10.254.0.0/16 \
---enable-admission-plugins=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota,NodeRestriction \
+--enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,ResourceQuota,NodeRestriction \
 --authorization-mode=RBAC,Node \
 --enable-bootstrap-token-auth \
 --token-auth-file=/k8s/kubernetes/cfg/token.csv \
