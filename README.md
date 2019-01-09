@@ -4,7 +4,7 @@
 + [kubernetes1.13.1部署kuberneted-dashboard v1.10.1](https://github.com/minminmsn/k8s1.13/blob/master/kubernetes-dashboard-amd64/Kubernetes1.13.1%E9%83%A8%E7%BD%B2Kuberneted-dashboard%20v1.10.1.md)
 + [kubernetes1.13.1部署coredns](https://github.com/minminmsn/k8s1.13/blob/master/coredns/kubernetes1.13.1%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2coredns.md)
 + [kubernetes1.13.1部署ingress-nginx并配置https转发dashboard]( https://github.com/minminmsn/k8s1.13/blob/master/ingress-nginx/kubernetes1.13.1%E9%83%A8%E7%BD%B2ingress-nginx%E5%B9%B6%E9%85%8D%E7%BD%AEhttps%E8%BD%AC%E5%8F%91dashboard.md)
-
++ [kubernetes1.13.1部署metrics-server0.3.1](https://github.com/minminmsn/k8s1.13/blob/master/metrics-server/kubernetes1.13.1%E9%83%A8%E7%BD%B2metrics-server0.3.1.md)
 ### 演示效果如下
 https://k8s.minminmsn.com
 输入token
