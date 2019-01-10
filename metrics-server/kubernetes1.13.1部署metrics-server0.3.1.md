@@ -114,10 +114,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - metrics.zhidaoauto.com
+    - metrics.minminmsn.com
     secretName: ingress-secret
   rules:
-    - host: metrics.zhidaoauto.com
+    - host: metrics.minminmsn.com
       http:
         paths:
         - path: /
