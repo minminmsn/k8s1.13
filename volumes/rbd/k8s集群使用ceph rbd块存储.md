@@ -269,6 +269,10 @@ ceph-rbd-pv-pod1   1/1     Running   0          3m39s   10.254.35.8   10.2.8.65 
 /dev/rbd0                  493G  162G  306G  35% /data
 /dev/rbd1                   20G   45M   20G   1% /var/lib/kubelet/plugins/kubernetes.io/rbd/mounts/rbd-k8s-image-cephimage2
 
+[root@elasticsearch02 rbd-k8s-image-cephimage3]# cd /var/lib/kubelet/plugins/kubernetes.io/rbd/mounts/rbd-k8s-image-cephimage2
+[root@elasticsearch02 rbd-k8s-image-cephimage2]# ls
+lost+found
+
 [root@elasticsearch01 rbd]# kubectl exec -ti ceph-rbd-pv-pod1 sh
 / # df -h
 Filesystem                Size      Used Available Use% Mounted on
@@ -299,6 +303,11 @@ ceph-rbd-pods  lost+found
 /mnt/ceph-rbd-pvc/busybox # echo busbox>ceph-rbd-pods 
 /mnt/ceph-rbd-pvc/busybox # cat ceph-rbd-pods 
 busbox
+
+[root@elasticsearch02 rbd-k8s-image-cephimage3]# cd /var/lib/kubelet/plugins/kubernetes.io/rbd/mounts/rbd-k8s-image-cephimage2
+[root@elasticsearch02 rbd-k8s-image-cephimage2]# ls
+ceph-rbd-pods  lost+found
+
 ```
 
 **2、ceph集群端验证**
