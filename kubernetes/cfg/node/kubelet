@@ -1,0 +1,11 @@
+KUBELET_OPTS="--logtostderr=true \
+--v=4 \
+--hostname-override=10.2.8.65 \
+--kubeconfig=/k8s/kubernetes/cfg/kubelet.kubeconfig \
+--bootstrap-kubeconfig=/k8s/kubernetes/cfg/bootstrap.kubeconfig \
+--config=/k8s/kubernetes/cfg/kubelet.config \
+--cert-dir=/k8s/kubernetes/ssl \
+--pod-infra-container-image=registry.cn-hangzhou.aliyuncs.com/google-containers/pause-amd64:3.0 \
+--cluster-dns=10.254.0.10 \
+--cluster-domain=cluster.local. \
+--resolv-conf=/etc/resolv.conf "

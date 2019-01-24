@@ -584,11 +584,17 @@ componentstatus/etcd-2               Healthy   {"health":"true"}
 ```
 
 ### 五、Node部署
->kubernetes work 节点运行如下组件：
+> kubernetes work 节点运行如下组件：
 docker 
 kubelet
 kube-proxy
 flannel
+系统环境
+CentOS Linux release 7.4.1708 (Core) 
+Docker版本
+Server Version: 18.09.0
+Cgroup Driver: cgroupfs
+
 
 ##### 5.1 Docker环境安装
 ```
@@ -695,7 +701,7 @@ apiVersion: kubelet.config.k8s.io/v1beta1
 address: 10.2.8.65
 port: 10250
 readOnlyPort: 10255
-cgroupDriver: systemd
+cgroupDriver: cgroupfs
 clusterDNS: ["10.254.0.10"]
 clusterDomain: cluster.local.
 failSwapOn: false
