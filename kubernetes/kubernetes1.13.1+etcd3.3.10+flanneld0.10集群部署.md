@@ -584,16 +584,17 @@ componentstatus/etcd-2               Healthy   {"health":"true"}
 ```
 
 ### 五、Node部署
-> kubernetes work 节点运行如下组件：
-docker 
-kubelet
-kube-proxy
-flannel
-系统环境
-CentOS Linux release 7.4.1708 (Core) 
-Docker版本
-Server Version: 18.09.0
-Cgroup Driver: cgroupfs
+> kubernetes work 节点运行如下组件：  
+docker   
+kubelet  
+kube-proxy  
+flannel  
+系统环境  
+CentOS Linux release 7.4.1708 (Core)   
+Docker版本  
+Server Version: 18.09.0  
+Cgroup Driver: cgroupfs  
+
 
 
 ##### 5.1 Docker环境安装
