@@ -29,4 +29,12 @@ socat
 需要在各个节点上安装socat
 yum install socat
 
-1、创建
+1、创建rbac角色
+[root@elasticsearch01 helm]# vim helm-rbac.yaml
+[root@elasticsearch01 helm]# kubectl create -f helm-rbac.yaml 
+serviceaccount/tiller created
+clusterrolebinding.rbac.authorization.k8s.io/tiller created
+
+
+
+
