@@ -31,7 +31,26 @@ yum install socat
 
 **1、创建rbac角色**
 ```
-[root@elasticsearch01 helm]# vim helm-rbac.yaml
+[root@elasticsearch01 helm]# cat helm-rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+
 [root@elasticsearch01 helm]# kubectl create -f helm-rbac.yaml 
 serviceaccount/tiller created
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
@@ -186,4 +205,31 @@ log is DEPRECATED and will be removed in a future version. Use logs instead.
 [root@elasticsearch01 helm]# helm version
 Client: &version.Version{SemVer:"v2.12.3", GitCommit:"eecf22f77df5f65c823aacd2dbd30ae6c65f186e", GitTreeState:"clean"}
 Server: &version.Version{SemVer:"v2.12.3", GitCommit:"eecf22f77df5f65c823aacd2dbd30ae6c65f186e", GitTreeState:"clean"}
+```
+
+其他错误
+```
+[root@elasticsearch01 helm]# helm list
+Error: configmaps is forbidden: User "system:serviceaccount:kube-system:default" cannot list resource "configmaps" in API group "" in the namespace "kube-system"
+```
+
+处理方式参考https://github.com/helm/helm/issues/3130
+原因分析，rbac权限问题，其实之前已经创建过，只是没有生效，需要重启tiller使其生效
+
+```
+[root@elasticsearch01 helm]# helm init --upgrade --service-account tiller
+$HELM_HOME has been configured at /root/.helm.
+
+Tiller (the Helm server-side component) has been upgraded to the current version.
+Happy Helming!
+
+[root@elasticsearch01 helm]# kubectl get pods -n kube-system
+NAME                                   READY   STATUS    RESTARTS   AGE
+coredns-7748f7f6df-2c7ws               1/1     Running   0          24d
+coredns-7748f7f6df-chhwx               1/1     Running   0          24d
+kubernetes-dashboard-cb55bd5bd-p644x   1/1     Running   0          18d
+kubernetes-dashboard-cb55bd5bd-vlmdh   1/1     Running   0          25d
+metrics-server-788c48df64-cfnnx        1/1     Running   0          16d
+metrics-server-788c48df64-v75gr        1/1     Running   0          16d
+tiller-deploy-dbb85cb99-9mhk8          1/1     Running   0          32s
 ```
