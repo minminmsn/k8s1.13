@@ -340,7 +340,7 @@ imagePullPolicy: IfNotPresent
 
 logLevel: debug
 # The initial password of Harbor admin. Change it from portal after launching Harbor
-harborAdminPassword: "zhidao@20190128"
+harborAdminPassword: "newpassword"
 # The secret key used for encryption. Must be a string of 16 chars.
 secretKey: "not-a-secure-key"
 
@@ -728,9 +728,44 @@ jenkins              jenkins.minminmsn.com                                      
 min-harbor-ingress   core-harbor.minminmsn.com,notary-harbor.minminmsn.com             80, 443   6m43s
 ```
 
-**2、配置解析浏览器访问**
-> https://core-harbor.minminmsn.com:47215
->  ![](https://upload-images.jianshu.io/upload_images/7535971-09d64d29f5974967.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![](https://upload-images.jianshu.io/upload_images/7535971-dfeb9597a33bdbaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+**2、docker login登陆验证**
+注意这里docker login默认是走https协议，需要ingress的node节点443对外开放，之前部署的ingress没有启动hostNetwork为true，这里需要启动，可以通过kubectl edit deployment/nginx-ingress-controller -n ingress-nginx修改，然后docker login就没问题了
+登陆测试
+```
+[root@elasticsearch02 ~]# docker login core-harbor.minminmsn.com
+Username: admin
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+```
+
+上传下载测试
+
+```
+[root@elasticsearch02 ~]# docker tag registry.cn-beijing.aliyuncs.com/minminmsn/kubernetes-dashboard:v1.10.1 core-harbor.minminmsn.com/public/kubernetes-dashboard:v1.10.1
+[root@elasticsearch02 ~]# docker push core-harbor.minminmsn.com/public/kubernetes-dashboard:v1.10.1
+The push refers to repository [core-harbor.minminmsn.com/public/kubernetes-dashboard]
+fbdfe08b001c: Pushed 
+v1.10.1: digest: sha256:54cc02a35d33a5ff9f8aa1a1b43f375728bcd85034cb311bdaf5c14f48340733 size: 529
+
+[root@elasticsearch03 ~]# docker pull core-harbor.zhidaoauto.com/public/kubernetes-dashboard:v1.10.1
+v1.10.1: Pulling from public/kubernetes-dashboard
+Digest: sha256:54cc02a35d33a5ff9f8aa1a1b43f375728bcd85034cb311bdaf5c14f48340733
+Status: Downloaded newer image for core-harbor.zhidaoauto.com/public/kubernetes-dashboard:v1.10.1
+
+
+```
+
+
+**3、配置解析浏览器访问**
+>  https://core-harbor.minminmsn.com
+>  ![](https://upload-images.jianshu.io/upload_images/7535971-cbb76f4ee5e2b146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/7535971-6de5ab146734be63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 
 
