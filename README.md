@@ -10,6 +10,8 @@
 + [kubernetes1.13.1集群使用ceph rbd存储块](https://github.com/minminmsn/k8s1.13/blob/master/volumes/rbd/k8s%E9%9B%86%E7%BE%A4%E4%BD%BF%E7%94%A8ceph%20rbd%E5%9D%97%E5%AD%98%E5%82%A8.md)
 + [kubernetes1.13.1集群结合ceph rbd部署最新版本jenkins](https://github.com/minminmsn/k8s1.13/blob/master/jenkins/k8s1.13.1%E9%9B%86%E7%BE%A4%E7%BB%93%E5%90%88ceph%20rbd%E9%83%A8%E7%BD%B2%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%ACjenkins.md)
 + [kubernetes1.13.1集群安装包管理工具helm](https://github.com/minminmsn/k8s1.13/blob/master/helm/kubernetes1.13.1%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7helm.md)
++ [kubernetes1.13.1集群集成harbor-helm](https://github.com/minminmsn/k8s1.13/blob/master/harbor-helm/kubernetes1.13.1%E9%9B%86%E7%BE%A4%E9%9B%86%E6%88%90harbor-helm.md)
+
 
 ### 演示效果如下
 https://k8s.minminmsn.com
