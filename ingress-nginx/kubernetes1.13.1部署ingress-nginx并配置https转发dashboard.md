@@ -11,6 +11,7 @@ https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#s
 https://jimmysong.io/kubernetes-handbook/concepts/admission-controller.html
 https://github.com/kubernetes/ingress-nginx/issues/3608
 https://blog.csdn.net/ygqygq2/article/details/82791101
+https://github.com/kubernetes/ingress-nginx/blob/c3ce6b892e5f1cc1066f81c19482dded2901ad45/docs/examples/static-ip/nginx-ingress-controller.yaml
 ```
 
 ### **简介**
@@ -185,7 +186,10 @@ Events:
   Normal  CREATE  3m3s  nginx-ingress-controller  Ingress ingress-nginx/dashboard-ingress
 ```
 **网页浏览**
-集群内部访问直接https://dashboard.minminmsn.com 即可；集群外部访问需要获取对外端口47215,另外需要设置dns解析,访问时同样需要输入token
+集群内部访问直接https://dashboard.minminmsn.com 即可；集群外部访问需要获取对外端口47215,
+如果需要直接访问node节点的80或者443端口需要把hostNetwork为true，mandatory.yaml配置文件要是没有提前修改，
+可以使用kubectl edit deployment/nginx-ingress-controller -n ingress-nginx在线修改，
+另外需要设置dns解析,访问时同样需要输入token
 [root@elasticsearch01 ~]# kubectl get svc -n ingress-nginx
 NAME            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
 ingress-nginx   LoadBalancer   10.254.125.151   <pending>     80:33003/TCP,443:47215/TCP   16m
