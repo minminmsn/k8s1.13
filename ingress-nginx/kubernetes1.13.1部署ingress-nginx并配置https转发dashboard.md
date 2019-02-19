@@ -166,16 +166,16 @@ ingress.extensions/dashboard-ingress created
 ```
 [root@elasticsearch01 ingree-nginx]# kubectl get ingress -n kube-system
 NAME                HOSTS                      ADDRESS   PORTS   AGE
-dashboard-ingress   dashboard.zhidaoauto.com             80      2m51s
-[root@elasticsearch01 ingree-nginx]# kubectl describe ingress dashboard-ingress -n ingress-nginx
+dashboard-ingress   dashboard.minminmsn.com             80      2m51s
+[root@elasticsearch01 ingree-nginx]# kubectl describe ingress dashboard-ingress -n kube-system
 Name:             dashboard-ingress
-Namespace:        ingress-nginx
+Namespace:        kube-system
 Address:          
 Default backend:  default-http-backend:80 (<none>)
 Rules:
   Host                      Path  Backends
   ----                      ----  --------
-  dashboard.zhidaoauto.com  
+  dashboard.minminmsn.com  
                                kubernetes-dashboard:443 (10.254.73.2:8443)
 Annotations:
   ingress.kubernetes.io/ssl-passthrough:  true
