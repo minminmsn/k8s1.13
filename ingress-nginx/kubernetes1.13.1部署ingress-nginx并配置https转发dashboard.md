@@ -164,7 +164,7 @@ ingress.extensions/dashboard-ingress created
 ```
 
 ```
-[root@elasticsearch01 ingree-nginx]# kubectl get ingress -n ingress-nginx
+[root@elasticsearch01 ingree-nginx]# kubectl get ingress -n kube-system
 NAME                HOSTS                      ADDRESS   PORTS   AGE
 dashboard-ingress   dashboard.zhidaoauto.com             80      2m51s
 [root@elasticsearch01 ingree-nginx]# kubectl describe ingress dashboard-ingress -n ingress-nginx
