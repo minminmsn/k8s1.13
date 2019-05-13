@@ -752,10 +752,10 @@ The push refers to repository [core-harbor.minminmsn.com/public/kubernetes-dashb
 fbdfe08b001c: Pushed 
 v1.10.1: digest: sha256:54cc02a35d33a5ff9f8aa1a1b43f375728bcd85034cb311bdaf5c14f48340733 size: 529
 
-[root@elasticsearch03 ~]# docker pull core-harbor.zhidaoauto.com/public/kubernetes-dashboard:v1.10.1
+[root@elasticsearch03 ~]# docker pull core-harbor.minminmsn.com/public/kubernetes-dashboard:v1.10.1
 v1.10.1: Pulling from public/kubernetes-dashboard
 Digest: sha256:54cc02a35d33a5ff9f8aa1a1b43f375728bcd85034cb311bdaf5c14f48340733
-Status: Downloaded newer image for core-harbor.zhidaoauto.com/public/kubernetes-dashboard:v1.10.1
+Status: Downloaded newer image for core-harbor.minminmsn.com/public/kubernetes-dashboard:v1.10.1
 
 
 ```

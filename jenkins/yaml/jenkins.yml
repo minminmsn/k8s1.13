@@ -112,8 +112,8 @@ spec:
         backend:
           serviceName: jenkins
           servicePort: 80
-    host: jenkins.zhidaoauto.com
+    host: jenkins.minminmsn.com
   tls:
   - hosts:
-    - jenkins.zhidaoauto.com
+    - jenkins.minminmsn.com
     secretName: ingress-secret

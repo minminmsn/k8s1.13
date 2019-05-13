@@ -24,8 +24,8 @@ expose:
     commonName: ""
   ingress:
     hosts:
-      core: core-harbor.zhidaoauto.com
-      notary: notary-harbor.zhidaoauto.com
+      core: core-harbor.minminmsn.com
+      notary: notary-harbor.minminmsn.com
     annotations:
       ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -76,7 +76,7 @@ expose:
 # the IP address of k8s node 
 # 
 # If Harbor is deployed behind the proxy, set it as the URL of proxy
-externalURL: https://core-harbor.zhidaoauto.com
+externalURL: https://core-harbor.minminmsn.com
 
 # The persistence is enabled by default and a default StorageClass
 # is needed in the k8s cluster to provision volumes dynamicly. 
