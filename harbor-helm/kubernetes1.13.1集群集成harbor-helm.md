@@ -708,14 +708,14 @@ rbd-provisioner-67b4857bcd-xxwx5            1/1     Running   0          42m
 
 **期间遇到各种报错可以重置helm环境**
 ```
-[root@elasticsearch01 harbor-helm]# helm install . --name min
-helm delete --purge min
+[root@elasticsearch01 harbor-helm]# helm delete --purge min
 These resources were kept due to the resource policy:
 [PersistentVolumeClaim] min-harbor-chartmuseum
 [PersistentVolumeClaim] min-harbor-jobservice
 [PersistentVolumeClaim] min-harbor-registry
 
 release "min" deleted
+
 ```
 
 ### 四、访问harobr
