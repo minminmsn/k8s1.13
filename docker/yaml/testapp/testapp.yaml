@@ -1,0 +1,73 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: testapp
+    app.kubernetes.io/part-of: ingress-nginx
+
+  name: testapp
+  namespace: ingress-nginx
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: testapp
+      app.kubernetes.io/part-of: ingress-nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: testapp
+        app.kubernetes.io/part-of: ingress-nginx
+    spec:
+      containers:
+        - image: core-harbor.zhidaoauto.com/public/testapp:2.0
+          name: testapp
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 10030
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+        - emptyDir: {}
+          name: data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testapp
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: testapp
+    app.kubernetes.io/part-of: ingress-nginx
+
+spec:
+  ports:
+    - port: 10030
+      protocol: TCP
+      targetPort: 10030
+  selector:
+    app.kubernetes.io/name: testapp
+    app.kubernetes.io/part-of: ingress-nginx
+  type: NodePort
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: testapp-ingress
+  namespace: ingress-nginx
+spec:
+  rules:
+    - host: testapp.zhidaoauto.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: testapp
+            servicePort: 10030
+
