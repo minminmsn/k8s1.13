@@ -8,7 +8,7 @@ https://github.com/coreos/kube-prometheus
 
 ### 背景环境
 
-- kubernetes集群1.13版本，纯二进制版本打造，参考[k8s1.13集群部署](https://github.com/minminmsn/k8s1.13/blob/master/kubernetes/kubernetes1.13.1%2Betcd3.3.10%2Bflanneld0.10%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.md）
+- kubernetes集群1.13版本，纯二进制版本打造，参考[k8s1.13集群部署](https://github.com/minminmsn/k8s1.13/blob/master/kubernetes/kubernetes1.13.1%2Betcd3.3.10%2Bflanneld0.10%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.md)
 
 - coreos/kube-prometheus从coreos/prometheus-operator独立出来了，后续entire monitoring stack只能去coreos/kube-prometheus
 
