@@ -84,7 +84,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: core-harbor.zhidaoauto.com/public/addon-resizer:1.8.4
+        image: core-harbor.minminmsn.com/public/addon-resizer:1.8.4
         name: addon-resizer
         resources:
           limits:

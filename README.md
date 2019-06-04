@@ -23,6 +23,15 @@
   - 应用程序镜像制作
 
 
+### Kube-Prometheus相关
+- **kubernetes集群**
+```
+http://grafana-k8s.minminmsn.com 
+admin
+admin
+```
+
+
 ### Kubernetes相关
 - **Kubernetes1.13文档**
    - [kubernetes1.13.1+etcd3.3.10+flanneld0.10集群部署](https://github.com/minminmsn/k8s1.13/blob/master/kubernetes/kubernetes1.13.1%2Betcd3.3.10%2Bflanneld0.10%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.md)
