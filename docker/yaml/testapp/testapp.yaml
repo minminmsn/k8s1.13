@@ -24,7 +24,7 @@ spec:
         app.kubernetes.io/part-of: ingress-nginx
     spec:
       containers:
-        - image: core-harbor.zhidaoauto.com/public/testapp:2.0
+        - image: core-harbor.minminmsn.com/public/testapp:2.0
           name: testapp
           imagePullPolicy: IfNotPresent
           ports:
@@ -63,7 +63,7 @@ metadata:
   namespace: ingress-nginx
 spec:
   rules:
-    - host: testapp.zhidaoauto.com
+    - host: testapp.minminmsn.com
       http:
         paths:
         - path: /

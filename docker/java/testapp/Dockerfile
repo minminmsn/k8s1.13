@@ -1,8 +1,8 @@
 # 基础镜像
-FROM core-harbor.zhidaoauto.com/public/jre-centos:1.8.0_212
+FROM core-harbor.minminmsn.com/public/jre-centos:1.8.0_212
 
 # 维护信息
-MAINTAINER minyt <minyongtao@zhidaoauto.com>
+MAINTAINER admin <admin@minminmsn.com>
 
 # 文件复制到镜像
 RUN mkdir -p /data1/isc-api-gateway-app && mkdir -p /data1/logs/isc-api-gateway-app && mkdir -p /data1/run/isc-api-gateway-app
