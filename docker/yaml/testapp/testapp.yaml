@@ -70,4 +70,4 @@ spec:
           backend:
             serviceName: testapp
             servicePort: 10030
-
+            
