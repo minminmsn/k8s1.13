@@ -31,6 +31,10 @@ admin
 admin
 ```
 
+### Fluentd-elasticsearch相关
+- **集群容器运行日志收集**
+[Kubernetes集群容器运行日志收集](https://github.com/minminmsn/k8s1.13/blob/master/fluentd-elasticsearch/Kubernetes%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86.md)
+
 
 ### Kubernetes相关
 - **Kubernetes1.13文档**
