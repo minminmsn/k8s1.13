@@ -48,7 +48,7 @@ admin
    - [kubernetes1.13.1集群安装包管理工具helm](https://github.com/minminmsn/k8s1.13/blob/master/helm/kubernetes1.13.1%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7helm.md)
    - [kubernetes1.13.1集群集成harbor-helm](https://github.com/minminmsn/k8s1.13/blob/master/harbor-helm/kubernetes1.13.1%E9%9B%86%E7%BE%A4%E9%9B%86%E6%88%90harbor-helm.md)
    - [kubernetes1.13.1集群全栈监控方案kube-prometheus](https://github.com/minminmsn/k8s1.13/blob/master/kube-prometheus/kubernetes%E9%9B%86%E7%BE%A4%E5%85%A8%E6%A0%88%E7%9B%91%E6%8E%A7%E6%8A%A5%E8%AD%A6%E6%96%B9%E6%A1%88kube-prometheus.md)
-
+   - [kubernetes1.13.1集群上使用Helm部署2.4.6版本Rancher集群](https://github.com/minminmsn/k8s1.13/blob/master/rancher/K8s%E9%9B%86%E7%BE%A4%E4%B8%8A%E4%BD%BF%E7%94%A8Helm%E9%83%A8%E7%BD%B22.4.6%E7%89%88%E6%9C%ACRancher%E9%9B%86%E7%BE%A4.md)
 
 ### 随喜赞叹
 ![](https://github.com/minminmsn/k8s1.13/blob/master/minminmsn.png)
