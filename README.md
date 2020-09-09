@@ -1,6 +1,7 @@
 ## 微服务容器化持续交付
 
 ### 总体流程
+
 - 开发代码提交到Gitlab
 - Rahcher设置代码库为Gitlab
 - Rahcher流水线配置编译源码
@@ -36,17 +37,6 @@
   - JAVA镜像制作
 
   - 应用程序镜像制作
-
-
-### Kube-Prometheus相关
-- **kubernetes集群**
-```
-https://rancher.minminmsn.com 
-```
-
-### Fluentd-elasticsearch相关
-- **集群容器运行日志收集**
-[Kubernetes集群容器运行日志收集](https://github.com/minminmsn/k8s1.13/blob/master/fluentd-elasticsearch/Kubernetes%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86.md)
 
 
 ### Kubernetes相关
