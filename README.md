@@ -12,7 +12,7 @@
 
 
 ### 架构图
-! ![](https://upload-images.jianshu.io/upload_images/7535971-230d6eb34f02d5bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+> ![](https://upload-images.jianshu.io/upload_images/7535971-230d6eb34f02d5bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### Rancher相关
@@ -56,4 +56,4 @@
    - [kubernetes1.13.1集群上使用Helm部署2.4.6版本Rancher集群](https://github.com/minminmsn/k8s1.13/blob/master/rancher/K8s%E9%9B%86%E7%BE%A4%E4%B8%8A%E4%BD%BF%E7%94%A8Helm%E9%83%A8%E7%BD%B22.4.6%E7%89%88%E6%9C%ACRancher%E9%9B%86%E7%BE%A4.md)
 
 ### 随喜赞叹
-![](https://minminmsn.com/wp-content/uploads/2019/11/msn-399x380.png)
+> ![](https://minminmsn.com/wp-content/uploads/2019/11/msn-399x380.png)
