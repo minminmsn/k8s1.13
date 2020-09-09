@@ -1,17 +1,32 @@
 ## 微服务容器化持续交付
 
 ### 总体流程
-- 在开发机开发代码后提交到gitlab
-- 通过镜像打包项目上线触发walle或jenkins进行构建，walle或jenkins将代码打成docker镜像，push到私有镜像库
-- 通过服务上线项目将在k8s-master上执行rc、service的创建，进而创建Pod，从私服拉取镜像，根据该镜像启动容器
+- 开发代码提交到Gitlab
+- Rahcher设置代码库为Gitlab
+- Rahcher流水线配置编译源码
+- Rahcher流水线Build Docker镜像
+- Rancher流水线Push Docker镜像到私有镜像库Harbor
+- Rancher流水线根据k8s yaml部署文件部署容器
+
 
 
 ### 架构图
 ![](https://github.com/minminmsn/k8s1.13/blob/master/Architecture.png)
 
 
-### Walle相关
+### Rancher相关
 
+  - Rancher集成Openldap
+
+  - Racher设置通知
+
+  - Rancher设置日志
+  
+  - Rancher配置代码库
+  
+  - Rancher配置镜像凭证
+  
+  - Rancher配置流水线
 
 ### Docker相关
 - **Docker镜像制作**
@@ -26,9 +41,7 @@
 ### Kube-Prometheus相关
 - **kubernetes集群**
 ```
-http://grafana-k8s.minminmsn.com 
-admin
-admin
+https://rancher.minminmsn.com 
 ```
 
 ### Fluentd-elasticsearch相关
