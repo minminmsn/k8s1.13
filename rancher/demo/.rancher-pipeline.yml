@@ -1,0 +1,31 @@
+stages:
+  - name: compile
+    steps:
+      - runScriptConfig:
+          image: core-harbor.zhidaoauto.com/enterprise-dev/centos-jdk8-maven
+  - name: push
+    steps:
+      - publishImageConfig:
+          dockerfilePath: ./Dockerfile
+          buildContext: .
+          tag: core-harbor.minminmsn.com/public/${CICD_GIT_REPO_NAME}:${CICD_GIT_COMMIT}
+          pushRemote: true
+          registry: core-harbor.minminmsn.com
+  - name: deploy
+    steps:
+      - applyYamlConfig:
+          path: ./kubernetes.yaml
+          
+notification:
+  recipients:
+  - recipient: op@minminmsn.com
+    notifier: local:n-chlz9
+  condition:
+  - Success
+  
+timeout: 60
+branch:
+  include:
+    - release/dev
+    - release/qa
+    - release/prod

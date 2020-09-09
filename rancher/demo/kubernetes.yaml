@@ -1,0 +1,132 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${CICD_GIT_REPO_NAME}
+  labels:
+    app: ${CICD_GIT_REPO_NAME}
+  namespace: {NS}
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: ${CICD_GIT_REPO_NAME}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${CICD_GIT_REPO_NAME}
+  labels:
+    app: ${CICD_GIT_REPO_NAME}
+  namespace: {NS}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ${CICD_GIT_REPO_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${CICD_GIT_REPO_NAME}
+    spec:
+      containers:
+        - name: java
+          image: core-harbor.minminmsn.com/public/${CICD_GIT_REPO_NAME}:${CICD_GIT_COMMIT}
+          command:
+            - "bash"
+            - "-c"
+            - "java -Denv={PROFILE} -Dfile.encoding=utf-8 $JAVA_OPTS -jar /opt/app.jar $APP_ARGS"
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: JAVA_OPTS
+              value: "
+              -javaagent:/opt/skywalking/skywalking-agent.jar
+              -Dskywalking.agent.namespace={PROFILE}
+              -Dskywalking.agent.service_name=${CICD_GIT_REPO_NAME}
+              -Dskywalking.collector.backend_service=192.168.88.61:11800
+              -Dskywalking.logging.file_name=${CICD_GIT_REPO_NAME}.log
+              -Dskywalking.logging.level=ERROR
+              -Dskywalking.agent.cool_down_threshold=3
+              -Dskywalking.agent.operation_name_threshold=10000
+              -Dplugin.toolit.use_qualified_name_as_operation_name=true
+              -Dskywalking.plugin.mysql.trace_sql_parameters=true
+              -server
+              -Xms1024m
+              -Xmx1024m
+              -Duser.timezone=GMT+8
+              -XX:+HeapDumpOnOutOfMemoryError
+              -XX:+DisableExplicitGC
+              -XX:+UseConcMarkSweepGC
+              -XX:+CMSParallelRemarkEnabled
+              -XX:+UseCMSInitiatingOccupancyOnly
+              -XX:CMSInitiatingOccupancyFraction=70
+              -XX:+PrintGCDetails
+              -XX:+PrintGCDateStamps
+              -XX:HeapDumpPath=/tmp/heapDump
+              -XX:ErrorFile=/tmp/logs/hs_err_pid%p.log
+              -Xloggc:/tmp/logs/gc.log"
+          readinessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            timeoutSeconds: 10
+            failureThreshold: 5
+            httpGet:
+              path: /demo/actuator/health
+              port: 8080
+          livenessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+            httpGet:
+              path: /demo/actuator/health
+              port: 8080
+          volumeMounts:
+            - mountPath: /tmp
+              name: log-volume
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - "bash"
+                  - "-c"
+                  - "killjava app.jar"
+          resources:
+            requests:
+              cpu: "1"
+              memory: 1024Mi
+            limits:
+              cpu: "2"
+              memory: 2048Mi
+        - name: filebeat-log
+          image: elastic/filebeat:7.9.0
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: filebeat-config
+              subPath: filebeat.yml
+              mountPath: /usr/share/filebeat/filebeat.yml
+            - name: log-volume
+              mountPath: /tmp
+        - name: filebeat-big-data-kafka
+          image: elastic/filebeat:7.9.0
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: filebeat-big-data-config
+              subPath: filebeat.yml
+              mountPath: /usr/share/filebeat/filebeat.yml
+            - name: log-volume
+              mountPath: /tmp
+      volumes:
+        - name: log-volume
+          emptyDir: {}
+        - name: filebeat-config
+          configMap:
+            name: filebeat-config
+        - name: filebeat-big-data-config
+          configMap:
+            name: filebeat-big-data-config
