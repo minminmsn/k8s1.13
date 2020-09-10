@@ -19,7 +19,7 @@
 
   - Rancher集成Openldap
 
-  - Racher设置通知
+  - Rancher设置通知
 
   - Rancher设置日志
   
